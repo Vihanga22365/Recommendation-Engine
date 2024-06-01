@@ -23,6 +23,9 @@ os.environ["LANGCHAIN_PROJECT"] = "Neuro-linguistic Recommendation Engine"
 llm = ChatOpenAI(model_name = "gpt-4o",temperature=0.2)
 
 uploaded_file = st.file_uploader("", type=['pdf'])
+
+
+st.session_state.pdf_context = ""
 if uploaded_file is not None:
     # Displaying file details
     # st.write("Filename:", uploaded_file.name)
@@ -109,7 +112,7 @@ for message in st.session_state.messages:
 
 
 # React to user input
-if prompt := st.chat_input("How can i help you?"):
+if prompt := st.chat_input("How can i help you?", disabled=(st.session_state.pdf_context == "")):
     # Display user message in chat message container
     st.chat_message("user").markdown(prompt)
     # Add user message to chat history
