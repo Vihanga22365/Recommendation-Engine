@@ -16,6 +16,8 @@ st.set_page_config(
     
 )
 
+st.subheader('Neuro-linguistic Recommendation Engine')
+
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
 os.environ["LANGCHAIN_PROJECT"] = "Neuro-linguistic Recommendation Engine"
@@ -91,6 +93,11 @@ st.markdown(
 <style>
     [data-testid="collapsedControl"] {
         display: none
+    }
+    
+    #neuro-linguistic-recommendation-engine {
+        font-size: 24px;
+        text-align: center;
     }
 </style>
 """,
