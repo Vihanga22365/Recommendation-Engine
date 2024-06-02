@@ -62,7 +62,7 @@ Context: {pdf_context}
 Current conversation:
 {history}
 Human: {input}
-AI Assistant:"""
+AI Assistant: Each time chat with the markdown format"""
 
 def generate_the_response(prompt, memory, pdf_context):
     # PROMPT = PromptTemplate(input_variables=["history", "input", "pdf_context"], template=template)
