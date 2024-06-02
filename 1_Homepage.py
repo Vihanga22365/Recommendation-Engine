@@ -427,7 +427,7 @@ if "messages" not in st.session_state:
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        st.text(message["content"])
+        st.text(message["content"].replace('*', ''))
 
 
 # React to user input
@@ -445,6 +445,6 @@ if prompt := st.chat_input("How can i help you?"):
     
     
     with st.chat_message("assistant"):
-        st.text(response)
+        st.text(response.replace('*', ''))
             
     st.session_state.messages.append({"role": "assistant", "content": response})
