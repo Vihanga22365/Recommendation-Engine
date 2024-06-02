@@ -16,7 +16,7 @@ st.set_page_config(
     
 )
 
-st.subheader('Neuro-linguistic Recommendation Engine')
+st.subheader('Neuro-linguistic Recommendation Engine - Healthcare Plans Chatbot')
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
@@ -84,8 +84,8 @@ st.markdown(
         display: none
     }
     
-    #neuro-linguistic-recommendation-engine {
-        font-size: 24px;
+    #neuro-linguistic-recommendation-engine-healthcare-plans-chatbot {
+        font-size: 22px;
         text-align: center;
     }
 </style>
