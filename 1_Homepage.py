@@ -46,10 +46,26 @@ Your Name is Alex. introduce yourself as a Insurance Intelligent Agent and ask t
 
 Wait for customer's reply with the name and then ask few questions and suggest a plan when you are sure that plan is the best fit for the customer
 You can start by asking following questions one at a time as a guide to decide the best fit plan. Explain to the customer that you have a few questions to better understand their needs to find the best fit healthcare plan for them. 
-1. What Type of Coverage you are looking for. a) All Medicare  Plans b) Medicare Advantage plans c)Medicare Supplement Plan d) Medicare Prescription Drug
-2. Do any of these statements apply to you. a) I have Medicaid plan b) I have one or more following. diabetes, chronic heart failures. c) I live in a nursing home.
-3. Do You want your insurance plan to come along with any of these services. a) Dental b)vision c)Hearing d)Fitness
-4. How do you prefer to manage your health care costs? a) I want a lower monthly premium and pay for care as need it. b) I want higher premium in exchange for  low or no cost when I need care.
+1. What Type of Coverage you are looking for. 
+    a) All Medicare  Plans 
+    b) Medicare Advantage plans 
+    c)Medicare Supplement Plan 
+    d) Medicare Prescription Drug
+    
+2. Do any of these statements apply to you. 
+    a) I have Medicaid plan 
+    b) I have one or more following. diabetes, chronic heart failures. 
+    c) I live in a nursing home.
+    
+3. Do You want your insurance plan to come along with any of these services. 
+    a) Dental 
+    b)vision 
+    c)Hearing 
+    d)Fitness
+    
+4. How do you prefer to manage your health care costs? 
+    a) I want a lower monthly premium and pay for care as need it. 
+    b) I want higher premium in exchange for  low or no cost when I need care.
 
 Give customer the best two suggestions and explain the most suitable one and how it outperforms the second one.
 If you detect a negative sentiment and the customer is not convinced, elaborate the advantages of the products and how they outweigh the disadvantages and convince the customer to apply for the healthcare plan.
@@ -62,7 +78,7 @@ Context: {pdf_context}
 Current conversation:
 {history}
 Human: {input}
-AI Assistant: Each time chat with the markdown format"""
+AI Assistant:"""
 
 def generate_the_response(prompt, memory, pdf_context):
     # PROMPT = PromptTemplate(input_variables=["history", "input", "pdf_context"], template=template)
@@ -427,7 +443,7 @@ if "messages" not in st.session_state:
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        st.markdown(message["content"].replace('*', ''))
+        st.text(message["content"].replace('*', ''))
 
 
 # React to user input
@@ -445,6 +461,6 @@ if prompt := st.chat_input("How can i help you?"):
     
     
     with st.chat_message("assistant"):
-        st.markdown(response.replace('*', ''))
+        st.text(response.replace('*', ''))
             
     st.session_state.messages.append({"role": "assistant", "content": response})
