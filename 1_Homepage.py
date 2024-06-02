@@ -7,6 +7,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chat_models import ChatOpenAI
 import os
 import pdfplumber
+import markdown
 
 st.set_page_config(
     page_title="Neuro-linguistic Recommendation Engine",
@@ -433,7 +434,6 @@ $0 copay per day after that for unlimited days
 Product 8 details ends
 """
 
-import markdown
 
 # Initialize chat history
 if "messages" not in st.session_state:
