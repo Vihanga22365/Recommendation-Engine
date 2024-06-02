@@ -425,13 +425,13 @@ if "messages" not in st.session_state:
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+        st.text(message["content"])
 
 
 # React to user input
 if prompt := st.chat_input("How can i help you?"):
     # Display user message in chat message container
-    st.chat_message("user").markdown(prompt)
+    st.chat_message("user").text(prompt)
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
@@ -440,7 +440,14 @@ if prompt := st.chat_input("How can i help you?"):
     pdf_context = main_context
     response = generate_the_response(prompt, messages_memory, pdf_context)
     # Display assistant response in chat message container
+    
+    markdown_chars = ['*', '_', '#', '-']
+    
     with st.chat_message("assistant"):
-        st.markdown(response)
-    # Add assistant response to chat history
+        
+        if any(char in response for char in markdown_chars):
+            st.markdown(response, unsafe_allow_html=True)
+        else:
+            st.text(response)
+            
     st.session_state.messages.append({"role": "assistant", "content": response})
