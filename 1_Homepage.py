@@ -433,6 +433,7 @@ $0 copay per day after that for unlimited days
 Product 8 details ends
 """
 
+import markdown
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -443,13 +444,15 @@ if "messages" not in st.session_state:
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        st.text(message["content"].replace('*', ''))
+        message_content_with_newlines = message["content"].replace('\n', '<br>')
+        message_html_content = markdown.markdown(message_content_with_newlines)
+        st.markdown(f"""<div style="">{message_html_content}</div>""", unsafe_allow_html=True)
 
 
 # React to user input
 if prompt := st.chat_input("How can i help you?"):
     # Display user message in chat message container
-    st.chat_message("user").text(prompt)
+    st.chat_message("user").markdown(prompt)
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
@@ -461,6 +464,8 @@ if prompt := st.chat_input("How can i help you?"):
     
     
     with st.chat_message("assistant"):
-        st.text(response.replace('*', ''))
+        response_with_newlines = response.replace('\n', '<br>')
+        response_html_content = markdown.markdown(response_with_newlines)
+        st.markdown(f"""<div style="">{response_html_content}</div>""", unsafe_allow_html=True)
             
     st.session_state.messages.append({"role": "assistant", "content": response})
