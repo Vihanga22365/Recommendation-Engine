@@ -43,10 +43,11 @@ template = """You are an health insurance Sales Representative who will have con
 Following context has information on insurance plan products with their details. Answer the users question based on the product information.
 Be proactive and ask questions from the user to understand more about user's needs and see which product best fits the user and answer the questions very convincingly.
 Limit your answer to 60 words or less at a time.
-Your Name is Alex. introduce yourself as a Insurance Intelligent Agent and ask the customer's name at the first interaction. After customer’s reply, ask questions from the customer and gather information to select a best plan for the customer
+Your Name is Alex, United Healthcare Assistant. introduce yourself as a Insurance Intelligent Agent and ask the customer's name at the first interaction. After customer’s reply, ask questions from the customer and gather information to select a best plan for the customer
 
 Wait for customer's reply with the name and then ask few questions and suggest a plan when you are sure that plan is the best fit for the customer
 You can start by asking following questions one at a time as a guide to decide the best fit plan. Explain to the customer that you have a few questions to better understand their needs to find the best fit healthcare plan for them. 
+
 1. What Type of Coverage you are looking for. 
     a) All Medicare  Plans 
     b) Medicare Advantage plans 
@@ -69,9 +70,10 @@ You can start by asking following questions one at a time as a guide to decide t
     b) I want higher premium in exchange for  low or no cost when I need care.
 
 Give customer the best two suggestions and explain the most suitable one and how it outperforms the second one.
-If you detect a negative sentiment and the customer is not convinced, elaborate the advantages of the products and how they outweigh the disadvantages and convince the customer to apply for the healthcare plan.
+If you detect a negative sentiment and the customer is not convinced, elaborate the advantages of the product and how they outweigh the disadvantages and convince the customer. Ask the customer whether they have more questions and how else you can helpt them. 
 Only reply as the sales representative and do not write the responses from the customer.
 Answer only based on the topic of healthcare insruance plans and If the customer questions is outside the context, just say that you don't know and steer the conversation back to the healthcare topic you know. Don't give any answer outside the context of insurance plans.
+
 
 
 Context: {pdf_context}
@@ -104,6 +106,12 @@ st.markdown(
     #neuro-linguistic-recommendation-engine-healthcare-plans-chatbot {
         font-size: 22px;
         text-align: center;
+    } 
+    [data-testid="stChatInputTextArea"] {
+        color: black;
+        background: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
     }
 </style>
 """,
@@ -113,8 +121,7 @@ st.markdown(
 # st.title("Chat with the Source Code with LLMs")
 
 
-main_context = """
-Following is a line of health insurance plans and their details.
+main_context = """Following is a line of health insurance plans and their details.
 
 Product 1 -AARP Medicare Supplement Insurance Plan F + wellness extras
 Product 1 Details
@@ -446,7 +453,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         message_content_with_newlines = message["content"].replace('\n', '<br>')
         message_html_content = markdown.markdown(message_content_with_newlines)
-        st.markdown(f"""<div style="">{message_html_content}</div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div style="font-size: 70px">{message_html_content}</div>""", unsafe_allow_html=True)
 
 
 # React to user input
@@ -466,6 +473,6 @@ if prompt := st.chat_input("How can i help you?"):
     with st.chat_message("assistant"):
         response_with_newlines = response.replace('\n', '<br>')
         response_html_content = markdown.markdown(response_with_newlines)
-        st.markdown(f"""<div style="">{response_html_content}</div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div style="font-size: 70px">{response_html_content}</div>""", unsafe_allow_html=True)
             
     st.session_state.messages.append({"role": "assistant", "content": response})
