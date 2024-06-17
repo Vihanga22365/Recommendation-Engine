@@ -1,8 +1,8 @@
 streamlit
 python-dotenv
-langchain  
-langchain_community
-langchain_core
+langchain==0.2.1
+langchain_community==0.2.1
+langchain_core==0.2.3
 openai
 pypdf
 pdfplumber
