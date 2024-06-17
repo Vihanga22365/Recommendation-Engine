@@ -7,4 +7,4 @@ openai
 pypdf
 pdfplumber
 markdown
-tenacity
+tenacity = >=8.1.0,!=8.4.0
