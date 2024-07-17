@@ -17,7 +17,7 @@ st.set_page_config(
     
 )
 
-st.subheader('Neuro-linguistic Recommendation Engine - Healthcare Plans Chatbot')
+st.subheader('Cigna Conversational Recommendation Engine')
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
